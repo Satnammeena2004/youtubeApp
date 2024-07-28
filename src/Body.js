@@ -6,7 +6,7 @@ import {Outlet} from "react-router-dom"
 
 function Body() {
   return (
-    <div className=' flex'>
+    <div className='dark flex '>
       <SideBar/>    
       <Outlet/>
     </div>

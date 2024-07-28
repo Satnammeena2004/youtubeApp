@@ -9,10 +9,10 @@ import { useGetDataQuery } from './utils/dataSlice';
 
 function VideoList() {
 const {isLoading,data} = useGetDataQuery()
-// console.log(data);
-  if (isLoading) {
-     return <h1>Loading....</h1>
-  }
+if (isLoading) {
+  return <h1>Loading....</h1>
+}
+console.log(data);
 
   return (
     <div className='border-2 w-full'>
