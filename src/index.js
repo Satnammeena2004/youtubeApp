@@ -7,7 +7,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import VideoList from './VideoList';
 import WatchPage from './WatchPage';
 import SearchResults from './SearchResults';
-import Practice, { Practice2 } from './Practice';
+import Practice from './Practice';
 
 
 
