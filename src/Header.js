@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import Suggestion from "./Suggestion";
 import {useNavigate} from "react-router-dom";
+import Category from "./Category";
 
 function Header() {
   const [suggestionVisible, setSuggestionVisible] = useState(false);
@@ -25,7 +26,8 @@ function Header() {
   }
 
   return (
-    <div className="flex justify-between  border-2 shadow-md mb-2 p-2">
+    <>
+    <div className="flex justify-between  p-2 sticky top-0 z-10 bg-black">
       <div className="flex gap-2">
         <span>📔</span>
         <img alt="Youtbde logo" src="" />
@@ -33,6 +35,7 @@ function Header() {
       <div className="w-2/4 ">
         <form onSubmit={handleSubmission}>
           <input
+          
             autoComplete="off"
             name="search"
             value={query}
@@ -51,8 +54,8 @@ function Header() {
             onFocus={(e) => {
               setSuggestionVisible(true);
             }}
-            className="peer p-2 outline-1 outline-zinc-300 placeholder:text-sm text-slate-500 border-gray-300 border rounded-sm w-2/3 rounded-l-full   "
-          />
+            className="peer p-2  border border-l-none shadow-slate-50 border- placeholder:text-sm  rounded-sm w-2/3 rounded-l-full text-[#f1f1f1] bg-black "
+            />
           <button
             type="submit"
             className="p-2 border  outline-lime-100 rounded-r-full"
@@ -68,6 +71,7 @@ function Header() {
       </div>
       <div className="">➕</div>
     </div>
+          </>
   );
 }
 

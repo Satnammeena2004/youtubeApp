@@ -15,7 +15,7 @@ if (isLoading) {
 console.log(data);
 
   return (
-    <div className='border-2 w-full'>
+    <div className='w-full  bg-[#0f0f0f]'>
     <div>
         <Category/>
     </div>

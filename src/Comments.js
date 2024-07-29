@@ -307,18 +307,7 @@ function Comment({author, message, replies}) {
 function CommentList({queryId}) {
   const {data, isLoading, error} = useGetCommentsByIdQuery(queryId);
 
-  // useEffect(() => {
-  //   async function getComments() {
-  //     const res = await fetch(
-  //       "https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&maxResults=25&videoId=U9sDK8zTJ8Y&key=" +
-  //         YOUTUBE_API_KEY
-  //     );
-  //     const json = await res.json();
-  //   setComments(json.items);
-  //   console.log(json.items)
-  //   }
-  //   // getComments();
-  // });
+
 
   if (error) {
     console.log(error);
