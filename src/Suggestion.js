@@ -45,7 +45,7 @@ const Suggestion = memo(function Suggestion({ visibility, query }) {
       {visibility && (
         <div
           id="scrollbar"
-          className="w-1/3 bg-gray-200 p-1 rounded-sm absolute top-14 *:text-sm *:text-slate-700 scrollbar h-60 overflow-y-scroll z-10	"
+          className="w-1/3 bg-gray-200 p-1 rounded-sm absolute top-14 *:text-sm *:text-slate-700 scrollbar h-60 overflow-y-scroll z-auto	"
         >
           <div className="flex flex-col">
             {suggestions.map((suggestion, i) => (

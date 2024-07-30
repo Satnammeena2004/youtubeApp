@@ -30,7 +30,14 @@ const [category,setCategory] = useState([])
 
   return (
     // <div>Category</div>
-    <div className='p-2 flex overflow-x-scroll no-scrollbar w-[70rem] bg-[#0f0f0f] fixed  z-10'>
+    <div className='p-2 flex overflow-x-scroll no-scrollbar w-[70rem] bg-[#0f0f0f] fixed  z-10 '>
+      <button onClick={(e)=>{
+        e.target.parentElement.scrollBy({
+          top:0,
+          left:100,
+          behavior:"smooth"
+        })
+      }} className='fixed right-4'>➡️</button>
       {
         category.map((category)=><button key={category.id} onClick={handleCLick} className='px-2 py-1 text-[#f1f1f1] rounded-md mx-2 text-sm break-keep text-nowrap bg-[#272727]'>{category.snippet.title}</button>)
       }
