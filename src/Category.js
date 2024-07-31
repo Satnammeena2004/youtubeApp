@@ -30,7 +30,7 @@ const [category,setCategory] = useState([])
 
   return (
     // <div>Category</div>
-    <div className='p-2 flex overflow-x-scroll no-scrollbar w-[70rem] bg-[#0f0f0f] fixed  z-10 '>
+    <div className='p-2 flex overflow-x-scroll no-scrollbar w-[70rem] bg-[#0f0f0f] fixed  z-[2] '>
       <button onClick={(e)=>{
         e.target.parentElement.scrollBy({
           top:0,
