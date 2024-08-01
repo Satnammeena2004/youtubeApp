@@ -19,7 +19,7 @@ console.log(data);
     <div>
         <Category/>
     </div>
-    <div className='p-2 grid grid-flow-row grid-cols-3'>
+    <div className='p-2 grid grid-flow-row grid-cols-3 h-screen overflow-y-scroll no-scrollbar'>
      {
       data?.items.map((item,i)=><VideoCard key={i} data={item}/>)
      }
