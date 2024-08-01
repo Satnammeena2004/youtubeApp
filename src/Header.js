@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Suggestion from "./Suggestion";
 import { useNavigate } from "react-router-dom";
-import Category from "./Category";
+import { IoIosOptions } from "react-icons/io"
+import { CiSearch } from "react-icons/ci";
+
+
 
 function Header() {
   const [suggestionVisible, setSuggestionVisible] = useState(false);
@@ -28,7 +31,8 @@ function Header() {
   return (
     <>
       <div className="flex justify-between  p-2 sticky top-0 z-10 bg-black">
-        <div className="flex gap-2 ml-14">
+        <div className="flex gap-6 ml-8">
+        <div className="flex justify-center items-center"><IoIosOptions  className="text-xl text-white"/></div>
           <svg xmlns="http://www.w3.org/2000/svg" id="yt-logo-updated-svg_yt9" class="external-icon" viewBox="0 0 90 20" focusable="false" style={{pointerEvents: "none", fill:"white",display: "inherit",width: "100px",height: "40px"}} aria-hidden="true">
             <svg id="yt-logo-updated_yt9" viewBox="0 0 90 20" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
               <g>
@@ -50,7 +54,7 @@ function Header() {
           </svg>
         </div>
         <div className="w-2/4 ">
-          <form onSubmit={handleSubmission}>
+          <form onSubmit={handleSubmission} className="flex">
             <input
 
               autoComplete="off"
@@ -71,13 +75,13 @@ function Header() {
               onFocus={(e) => {
                 setSuggestionVisible(true);
               }}
-              className="peer p-2  border border-l-none shadow-slate-50 border- placeholder:text-sm  rounded-sm w-2/3 rounded-l-full text-[#f1f1f1] bg-black "
+              className="peer p-2  border border-l-none shadow-slate-50  placeholder:text-sm  rounded-sm w-2/3 rounded-l-full text-[#f1f1f1] bg-black outline-0"
             />
             <button
               type="submit"
               className="p-2 border border-l-0  outline-lime-100 rounded-r-full"
             >
-              🔍
+              <CiSearch className="text-xl text-white"/>
             </button>
           </form>
           <Suggestion
