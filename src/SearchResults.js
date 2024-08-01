@@ -53,7 +53,7 @@ function SearchResults() {
   return (
     <div className="w-full">
       <h1>Serach Result - {searchParam.get("q")}</h1>
-      <div className="grid grid-cols3 gap-4 h-screen overflow-y-scroll">
+      <div className="grid grid-cols-3 bg-[#0f0f0f] gap-4 h-screen overflow-y-scroll">
         {searchQueryResults?.items?.map((result) => (
           <VideoCard key={result.etag} data={result} />
         ))}

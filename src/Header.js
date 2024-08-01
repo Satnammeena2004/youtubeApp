@@ -3,6 +3,19 @@ import Suggestion from "./Suggestion";
 import { useNavigate } from "react-router-dom";
 import { IoIosOptions } from "react-icons/io"
 import { CiSearch } from "react-icons/ci";
+import { FaRegBell } from "react-icons/fa";
+import { RiVideoAddLine } from "react-icons/ri";
+import { CgProfile } from "react-icons/cg";
+import { FaMicrophone } from "react-icons/fa";
+
+
+
+function ReactIcons({ children }) {
+
+  return (
+    <button className="p-2 hover:bg-gray-100/30 rounded-full">{children}</button>
+  )
+}
 
 
 
@@ -30,10 +43,10 @@ function Header() {
 
   return (
     <>
-      <div className="flex justify-between  p-2 sticky top-0 z-10 bg-black">
+      <div className="flex justify-between  p-2 sticky top-0 z-10 bg-[#0f0f0f]">
         <div className="flex gap-6 ml-8">
-        <div className="flex justify-center items-center"><IoIosOptions  className="text-xl text-white"/></div>
-          <svg xmlns="http://www.w3.org/2000/svg" id="yt-logo-updated-svg_yt9" class="external-icon" viewBox="0 0 90 20" focusable="false" style={{pointerEvents: "none", fill:"white",display: "inherit",width: "100px",height: "40px"}} aria-hidden="true">
+          <div className="flex justify-center items-center"><IoIosOptions className="text-xl text-white" /></div>
+          <svg xmlns="http://www.w3.org/2000/svg" id="yt-logo-updated-svg_yt9" class="external-icon" viewBox="0 0 90 20" focusable="false" style={{ pointerEvents: "none", fill: "white", display: "inherit", width: "100px", height: "40px" }} aria-hidden="true">
             <svg id="yt-logo-updated_yt9" viewBox="0 0 90 20" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
               <g>
                 <path d="M27.9727 3.12324C27.6435 1.89323 26.6768 0.926623 25.4468 0.597366C23.2197 2.24288e-07 14.285 0 14.285 0C14.285 0 5.35042 2.24288e-07 3.12323 0.597366C1.89323 0.926623 0.926623 1.89323 0.597366 3.12324C2.24288e-07 5.35042 0 10 0 10C0 10 2.24288e-07 14.6496 0.597366 16.8768C0.926623 18.1068 1.89323 19.0734 3.12323 19.4026C5.35042 20 14.285 20 14.285 20C14.285 20 23.2197 20 25.4468 19.4026C26.6768 19.0734 27.6435 18.1068 27.9727 16.8768C28.5701 14.6496 28.5701 10 28.5701 10C28.5701 10 28.5677 5.35042 27.9727 3.12324Z" fill="#FF0000"></path>
@@ -75,14 +88,18 @@ function Header() {
               onFocus={(e) => {
                 setSuggestionVisible(true);
               }}
-              className="peer p-2  border border-l-none shadow-slate-50  placeholder:text-sm  rounded-sm w-2/3 rounded-l-full text-[#f1f1f1] bg-black outline-0"
+              className="peer p-2  border border-l-none shadow-slate-50  placeholder:text-sm  rounded-sm w-2/3 rounded-l-full text-[#f1f1f1] bg-[#0f0f0f] outline-0"
             />
             <button
               type="submit"
               className="p-2 border border-l-0  outline-lime-100 rounded-r-full"
             >
-              <CiSearch className="text-xl text-white"/>
+              <CiSearch className="text-xl text-white" />
             </button>
+          
+
+            <button className="p-2 hover:bg-gray-100/30 rounded-full"><FaMicrophone/></button>
+
           </form>
           <Suggestion
             visibility={suggestionVisible}
@@ -90,7 +107,14 @@ function Header() {
             query={query}
           />
         </div>
-        <div className="">➕</div>
+        <div className="flex text-white justify-center items-center gap-8 *:text-xl">
+          <ReactIcons>      <FaRegBell /></ReactIcons>
+          <ReactIcons>      <RiVideoAddLine /></ReactIcons>
+          <ReactIcons>      <CgProfile /></ReactIcons>
+
+
+
+        </div>
       </div>
     </>
   );

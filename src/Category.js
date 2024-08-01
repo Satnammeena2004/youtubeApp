@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { VIDEO_CATEGORY_API_URL, YOUTUBE_API_KEY } from './constant';
-
+import { IoIosArrowForward } from "react-icons/io";
 // const category = ["Music","Cricket","Comedy","Movie","Secns","Satnd up","Video","Trendig","Cricket","Cricket","Cricket"]
 
 
@@ -30,14 +30,14 @@ const [category,setCategory] = useState([])
 
   return (
     // <div>Category</div>
-    <div className='p-2 flex overflow-x-scroll no-scrollbar w-[70rem] bg-[#0f0f0f] fixed  z-[2] '>
+    <div className='p-2 flex overflow-x-scroll no-scrollbar  bg-[#0f0f0f] fixed w-full z-[2] '>
       <button onClick={(e)=>{
         e.target.parentElement.scrollBy({
           top:0,
           left:100,
           behavior:"smooth"
         })
-      }} className='fixed right-4'>➡️</button>
+      }} className='fixed right-4'><IoIosArrowForward className='text-xl text-white bg-black '/></button>
       {
         category.map((category)=><button key={category.id} onClick={handleCLick} className='px-2 py-1 text-[#f1f1f1] rounded-md mx-2 text-sm break-keep text-nowrap bg-[#272727]'>{category.snippet.title}</button>)
       }

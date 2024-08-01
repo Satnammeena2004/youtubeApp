@@ -16,9 +16,7 @@ console.log(data);
 
   return (
     <div className='w-full  bg-[#0f0f0f]'>
-    <div>
         <Category/>
-    </div>
     <div className='p-2 grid grid-flow-row grid-cols-3 h-screen overflow-y-scroll no-scrollbar'>
      {
       data?.items.map((item,i)=><VideoCard key={i} data={item}/>)
