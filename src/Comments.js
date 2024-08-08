@@ -321,7 +321,7 @@ function CommentList({queryId}) {
   return (
     <>
       <h1>Comment List</h1>
-      <div>
+      <div className="*:text-white">
         {data?.items?.map((comment) => (
           <Comment2 key={comment.id} comment={comment} />
         ))}

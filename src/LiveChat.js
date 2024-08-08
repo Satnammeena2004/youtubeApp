@@ -62,7 +62,7 @@ const handleClick = useMemo(()=>function handleClick(e) {
 //   }, [handleClick,dispatch]);
 
   return (
-    <div>
+    <div className="bg-[#0f0f0f]">
       <h1 className="p-1 text-center font-bold text-2xl ">LiveChat</h1>
       <div  className="h-80 my-2  flex flex-col-reverse p-2  overflow-y-scroll ">
         {liveChat.map((chat, i) => (

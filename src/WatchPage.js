@@ -33,7 +33,7 @@ function WatchPage() {
   }
 
   return (
-    <div className="p-2  px-20 flex justify-between w-full">
+    <div className="p-2  px-20 flex justify-between w-full bg-[#0f0f0f]">
       <div className="">
         <h1 className="p-1 text-center font-bold text-2xl ">Watch Page</h1>
         {/* <div className="h-60  shadow-lg"></div> */}
@@ -44,7 +44,7 @@ function WatchPage() {
         </div>
       </div>
 
-      <div className="p-2 shadow-lg bg-slate-100">
+      <div className="p-2 shadow-lg  bg-[#0f0f0f]">
         <LiveChat />
       </div>
     </div>
