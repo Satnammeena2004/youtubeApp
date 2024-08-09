@@ -37,7 +37,7 @@ function VideoCard({ data }) {
 
   return (
     <Link to={`/watch?v=${id?.videoId ?? id}`}>
-      <div className="  p-2 rounded-lg *:text-sm flex flex-col m-2 min-h-80 text-[#f1f1f1]">
+      <div className="  p-2 rounded-lg *:text-sm flex flex-col m-2 min-h-80 text-[#f1f1f1] hover:scale-105 transition-transform">
         <div className=" border-slate-500 rounded-2xl  flex justify-center items-center max-h-52 overflow-hidden min-h-44">
           <img alt="video" src={thumbnails?.high?.url} className="rounded-md scale-y-105 " />
         </div>
