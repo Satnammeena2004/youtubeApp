@@ -3,6 +3,7 @@ import Category from './Category'
 import VideoCard from './VideoCard'
 
 import { useGetDataQuery } from './utils/dataSlice';
+import ShimmerList from './Shimmer';
 
 
 
@@ -10,7 +11,7 @@ import { useGetDataQuery } from './utils/dataSlice';
 function VideoList() {
 const {isLoading,data} = useGetDataQuery()
 if (isLoading) {
-  return <h1>Loading....</h1>
+  return <ShimmerList count={6}/>
 }
 console.log(data);
 
