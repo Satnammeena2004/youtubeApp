@@ -49,12 +49,12 @@ function VideoCard({ data }) {
             </ div>
 
           </div>
-          <div className="flex flex-col gap-y-2 h-1/2 pb-3 py-2 ">
+          <div className="flex flex-col gap-y-1.5 h-1/2 pb-3 py-2 ">
             <p className=" overflow-ellipsis line-clamp-2 font-semibold *:text-[#f1f1f1]">{title}</p>
-            <div className="flex-1 ">{channelTitle}</div>
-            <div className="flex gap-3 text-sm ">
-              <span className="">{viewCount(statistics?.viewCount)}</span>
-              <span className="">|</span>
+            <div className="flex-1 text-gray-400 font-normal">{channelTitle}</div>
+            <div className="flex gap-3 text-xs *:text-gray-400 *:font-light items-center">
+              <span className="">{viewCount(statistics?.viewCount)} views</span>
+              <span className="bg-gray-500 w-1 h-1 rounded-full "></span>
               <span className="">{dateDiff(publishedAt) + ' days ago'}</span>
             </div>
           </div>
