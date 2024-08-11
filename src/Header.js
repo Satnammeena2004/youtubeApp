@@ -7,6 +7,7 @@ import { FaRegBell } from "react-icons/fa";
 import { RiVideoAddLine } from "react-icons/ri";
 import { CgProfile } from "react-icons/cg";
 import { FaMicrophone } from "react-icons/fa";
+import SidebarSection from "./SidebarSection";
 
 
 
@@ -43,6 +44,7 @@ function Header() {
 
   return (
     <>
+    <SidebarSection/>
       <div className="flex justify-between  p-2 sticky top-0 z-10 bg-[#0f0f0f]">
         <div className="flex gap-6 ml-8">
           <div className="flex justify-center items-center"><IoIosOptions className="text-xl text-white" /></div>
