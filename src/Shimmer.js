@@ -2,7 +2,7 @@ import React from 'react'
 
 function Shimmer() {
     return (
-        <div className='flex flex-col h-72 gap-y-3  animate-pulse'>
+        <div className='flex flex-col h-72 gap-y-3  animate-pulse mt-8'>
             <div className=' bg-gray-500/20 rounded-lg h-4/5'></div>
             <div className='flex gap-1'>
                 <div>

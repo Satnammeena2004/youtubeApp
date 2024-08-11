@@ -88,11 +88,11 @@ function Header() {
               onFocus={(e) => {
                 setSuggestionVisible(true);
               }}
-              className="peer p-2  border border-l-none shadow-slate-50  placeholder:text-sm  rounded-sm w-2/3 rounded-l-full text-[#f1f1f1] bg-[#0f0f0f] outline-0"
+              className="peer p-2  border-gray-400/40 border-l-none shadow-slate-50 border  placeholder:text-sm  rounded-sm w-2/3 rounded-l-full text-[#f1f1f1] bg-[#0f0f0f] outline-0"
             />
             <button
               type="submit"
-              className="p-2 border border-l-0  outline-lime-100 rounded-r-full"
+              className="p-2 border-gray-400/40 border-l-0 border outline-lime-100 rounded-r-full"
             >
               <CiSearch className="text-xl text-white" />
             </button>
