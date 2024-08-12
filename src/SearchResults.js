@@ -1,22 +1,21 @@
-import {useEffect, useState} from "react";
-import {useSearchParams} from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import VideoCard from "./VideoCard";
-import { useGetSearchResultsQuery } from "./utils/searchListSlice";
 import { useDispatch } from 'react-redux';
-import {useSelector} from "react-redux";
+import { useSelector } from "react-redux";
 import { YOUTUBE_API_KEY } from "./constant";
 import { cacheResults } from "./utils/manualCacheSearchResultSlice";
+import Category from "./Category";
 
 
 
 function SearchResults() {
   const [searchParam] = useSearchParams();
   const [searchQueryResults, setSearchQueryResults] = useState([]);
-  // const [count, setCount] = useState(6);
-  // const {data,isLoading} = useGetSearchResultsQuery(searchParam.get("q"));
+
   const cache = useSelector((store) => store.searchResultsCache.cache);
-   const dispatch = useDispatch()
-  console.log("cahe", cache);
+  const dispatch = useDispatch()
+  console.log("cache", cache);
 
   useEffect(() => {
     async function getResults() {
@@ -29,22 +28,24 @@ function SearchResults() {
         const json = await res.json();
         setSearchQueryResults(json);
         console.log(json);
+        return json;
       } catch (error) {
         console.log(error);
       }
     }
 
-    getResults();
+    if (cache[searchParam.get("q")]) {
+      console.log("cached used", cache);
+      setSearchQueryResults(cache[searchParam.get("q")])
 
-    if (cache[searchParam]) {
-      console.log("cached used");
     } else {
       console.log("api call");
-      dispatch(cacheResults({
-        [searchParam]:["params"]
-      }))
+      getResults().then((result)=>{
+        dispatch(cacheResults({[searchParam.get("q")]:result}))
+
+      })
     }
-  }, [searchParam, cache,dispatch]);
+  }, [searchParam, dispatch]);
 
   if (searchQueryResults === 0) {
     return <h1>Loading Search Results for -{searchParam.get("q")}</h1>;
@@ -52,8 +53,8 @@ function SearchResults() {
 
   return (
     <div className="w-full">
-      <h1>Serach Result - {searchParam.get("q")}</h1>
-      <div className="grid grid-cols-3 bg-[#0f0f0f] gap-4 h-screen overflow-y-scroll">
+      <Category />
+      <div className="grid grid-cols-3 bg-[#0f0f0f] gap-4 h-screen overflow-y-scroll mt-8">
         {searchQueryResults?.items?.map((result) => (
           <VideoCard key={result.etag} data={result} />
         ))}

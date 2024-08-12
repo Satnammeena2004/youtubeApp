@@ -10,7 +10,8 @@ const manualCacheSearchResults = createSlice({
   },
   reducers:{
     cacheResults:(state,action)=>{
-        state ={...action.payload,...state};
+      console.log(action,state)
+        state.cache ={...action.payload,...state.cache};
     }
   }
 });

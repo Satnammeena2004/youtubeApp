@@ -38,18 +38,23 @@ function Header() {
 
   function handleSubmission(e) {
     e.preventDefault();
+
     let formData = new FormData(e.target);
-    navigate("/search?q=" + formData.get("search"));
+    let query = formData.get("search");
+    if (query === "") {
+    } else {
+      navigate("/search?q=" + formData.get("search"));
+    }
   }
 
   return (
     <>
-    <SidebarSection/>
+      <SidebarSection />
       <div className="flex justify-between  p-2 sticky top-0 z-10 bg-[#0f0f0f]">
         <div className="flex gap-6 ml-8">
-          <button onClick={()=>{
+          <button onClick={() => {
             const sidebar = document.getElementById("sidebarSection");
-            sidebar.style.left="0px"
+            sidebar.style.left = "0px"
           }} className="flex justify-center items-center"><IoIosOptions className="text-xl text-white" /></button>
           <svg xmlns="http://www.w3.org/2000/svg" id="yt-logo-updated-svg_yt9" class="external-icon" viewBox="0 0 90 20" focusable="false" style={{ pointerEvents: "none", fill: "white", display: "inherit", width: "100px", height: "40px" }} aria-hidden="true">
             <svg id="yt-logo-updated_yt9" viewBox="0 0 90 20" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
@@ -101,9 +106,9 @@ function Header() {
             >
               <CiSearch className="text-xl text-white" />
             </button>
-          
 
-            <button className="p-2 hover:bg-gray-100/30 rounded-full"><FaMicrophone/></button>
+
+            <button className="p-2 hover:bg-gray-100/30 rounded-full"><FaMicrophone /></button>
 
           </form>
           <Suggestion
