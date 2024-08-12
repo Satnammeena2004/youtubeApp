@@ -5,23 +5,86 @@ import { GoHome } from "react-icons/go";
 import { SiYoutubeshorts } from "react-icons/si";
 import { MdOutlineSubscriptions } from "react-icons/md";
 import { MdPlaylistAddCheckCircle } from "react-icons/md";
+import { CgProfile } from "react-icons/cg";
+import { MdOutlinePlaylistPlay,MdOndemandVideo  ,MdOutlineWatchLater,MdHistory } from "react-icons/md";
+import { AiOutlineLike } from "react-icons/ai";
 
 function Title({ title, children }) {
 
     return (
-        <div className='flex  gap-x-4  hover:bg-gray-100/10 rounded-lg items-center cursor-pointer'>
+        <div className='flex  gap-x-4 p-2 hover:bg-gray-100/10 rounded-lg items-center cursor-pointer'>
             {children}
             <span>{title}</span>
         </div>
     )
 }
+/**
+ * 
+ * 
 
+IN
+Home
+Shorts
+Subscriptions
+You
+Your channel
+History
+Playlists
+Your videos
+Watch later
+Liked videos
+Subscriptions
+
+100xDevs
+
+MrBeast
+
+Akshay Saini
+
+Sachin Awasthi Unscripted
+
+Harkirat Singh
+
+Sheryians Coding School
+
+Peepal Farm Updates
+Show more
+Explore
+Trending
+Shopping
+Music
+Movies
+Live
+Gaming
+News
+Sports
+Courses
+Fashion & Beauty
+Podcasts
+More from YouTube
+YouTube Premium
+YouTube Studio
+YouTube Music
+YouTube Kids
+Settings
+Report history
+Help
+Send feedback
+AboutPressCopyrightContact usCreatorsAdvertiseDevelopers
+TermsPrivacyPolicy & SafetyHow YouTube worksTest new features
+© 2024 Google LLC 
+ * 
+ * 
+ */
 
 function SidebarSection() {
     return (
-        <div className='bg-[#0f0f0f]  *:text-white w-60'>
+        <div id='sidebarSection' className='bg-[#0f0f0f] transition-all *:text-white w-60 absolute no-scrollbar -left-60 top-0 z-50 h-[calc(100%+90px)] overflow-y-scroll pt-4'>
             <div className="flex gap-6 ml-8">
-                <div className="flex justify-center items-center"><IoIosOptions className="text-xl text-white" /></div>
+                <button  onClick={()=>{
+                       const sidebar = document.getElementById("sidebarSection");
+            sidebar.style.left="-300px"
+                }} className="flex justify-center items-center"><IoIosOptions className="text-xl text-white" /></button>
                 <svg xmlns="http://www.w3.org/2000/svg" id="yt-logo-updated-svg_yt9" class="external-icon" viewBox="0 0 90 20" focusable="false" style={{ pointerEvents: "none", fill: "white", display: "inherit", width: "100px", height: "40px" }} aria-hidden="true">
                     <svg id="yt-logo-updated_yt9" viewBox="0 0 90 20" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
                         <g>
@@ -42,11 +105,23 @@ function SidebarSection() {
                     </svg>
                 </svg>
             </div>
+            <div className='wrapper divide-y divide-gray-500'>
+
             <div className='px-8 py-4 flex flex-col gap-y-6'>
           <Title title={"Home"}><GoHomeFill/></Title>
           <Title title={"Shorts"}><SiYoutubeshorts/></Title>
           <Title title={"Subscription"}><MdOutlineSubscriptions/></Title>
           <Title title={"Playlist"}><MdPlaylistAddCheckCircle/></Title>
+            </div>
+            <div className='px-8 py-4 flex flex-col gap-y-6'>
+          <Title title={"Your channel"}><CgProfile/></Title>
+          <Title title={"History"}><MdHistory/></Title>
+          <Title title={"Playlists"}><MdOutlinePlaylistPlay/></Title>
+          <Title title={"Your Videos"}><MdOndemandVideo/></Title>
+          <Title title={"Watch Later"}><MdOutlineWatchLater/></Title>
+          <Title title={"Liked Videos"}><AiOutlineLike/></Title>
+          <Title title={"Subscription"}><MdPlaylistAddCheckCircle/></Title>
+            </div>
             </div>
         </div>
     )
