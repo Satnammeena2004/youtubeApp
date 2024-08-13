@@ -8,7 +8,8 @@ import { RiVideoAddLine } from "react-icons/ri";
 import { CgProfile } from "react-icons/cg";
 import { FaMicrophone } from "react-icons/fa";
 import SidebarSection from "./SidebarSection";
-
+import { useDispatch, useSelector } from "react-redux";
+import {changeVisibilityOfSideBar} from "./utils/manualCacheSearchResultSlice"
 
 
 function ReactIcons({ children }) {
@@ -22,6 +23,8 @@ function ReactIcons({ children }) {
 
 function Header() {
   const [suggestionVisible, setSuggestionVisible] = useState(false);
+  const sidebarIsVisibile =useSelector(store=>store.searchResultsCache.sidebarVisibility)  
+  const dispatch = useDispatch()
   const [query, setQuery] = useState("");
   const navigate = useNavigate();
   // const [debounce,setDebounce] = useState(true);
@@ -49,12 +52,12 @@ function Header() {
 
   return (
     <>
-      <SidebarSection />
+     {sidebarIsVisibile&&<SidebarSection />}
       <div className="flex justify-between  p-2 sticky top-0 z-10 bg-[#0f0f0f]">
         <div className="flex gap-6 ml-8">
           <button onClick={() => {
-            const sidebar = document.getElementById("sidebarSection");
-            sidebar.style.left = "0px"
+            dispatch(changeVisibilityOfSideBar())
+      
           }} className="flex justify-center items-center"><IoIosOptions className="text-xl text-white" /></button>
           <svg xmlns="http://www.w3.org/2000/svg" id="yt-logo-updated-svg_yt9" class="external-icon" viewBox="0 0 90 20" focusable="false" style={{ pointerEvents: "none", fill: "white", display: "inherit", width: "100px", height: "40px" }} aria-hidden="true">
             <svg id="yt-logo-updated_yt9" viewBox="0 0 90 20" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">

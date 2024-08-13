@@ -1,13 +1,14 @@
 import React from 'react'
 import { IoIosOptions } from 'react-icons/io'
-import {GoHomeFill } from "react-icons/go"
-import { GoHome } from "react-icons/go";
+import { GoHomeFill } from "react-icons/go"
 import { SiYoutubeshorts } from "react-icons/si";
 import { MdOutlineSubscriptions } from "react-icons/md";
 import { MdPlaylistAddCheckCircle } from "react-icons/md";
 import { CgProfile } from "react-icons/cg";
-import { MdOutlinePlaylistPlay,MdOndemandVideo  ,MdOutlineWatchLater,MdHistory } from "react-icons/md";
+import { MdOutlinePlaylistPlay, MdOndemandVideo, MdOutlineWatchLater, MdHistory } from "react-icons/md";
 import { AiOutlineLike } from "react-icons/ai";
+import { useDispatch } from 'react-redux';
+import { changeVisibilityOfSideBar } from './utils/manualCacheSearchResultSlice';
 
 function Title({ title, children }) {
 
@@ -78,12 +79,14 @@ TermsPrivacyPolicy & SafetyHow YouTube worksTest new features
  */
 
 function SidebarSection() {
+    const dispatch = useDispatch();
+
     return (
-        <div id='sidebarSection' className='bg-[#0f0f0f] transition-all *:text-white w-60 absolute no-scrollbar -left-60 top-0 z-50 h-[calc(100%+90px)] overflow-y-scroll pt-4'>
+        <div id='sidebarSection' className='bg-[#0f0f0f] transition-all *:text-white w-60 absolute no-scrollbar  top-0 z-50 h-[calc(100%+90px)] overflow-y-scroll pt-4'>
             <div className="flex gap-6 ml-8">
-                <button  onClick={()=>{
-                       const sidebar = document.getElementById("sidebarSection");
-            sidebar.style.left="-300px"
+                <button onClick={() => {
+                    dispatch(changeVisibilityOfSideBar())
+
                 }} className="flex justify-center items-center"><IoIosOptions className="text-xl text-white" /></button>
                 <svg xmlns="http://www.w3.org/2000/svg" id="yt-logo-updated-svg_yt9" class="external-icon" viewBox="0 0 90 20" focusable="false" style={{ pointerEvents: "none", fill: "white", display: "inherit", width: "100px", height: "40px" }} aria-hidden="true">
                     <svg id="yt-logo-updated_yt9" viewBox="0 0 90 20" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
@@ -107,21 +110,21 @@ function SidebarSection() {
             </div>
             <div className='wrapper divide-y divide-gray-500'>
 
-            <div className='px-8 py-4 flex flex-col gap-y-6'>
-          <Title title={"Home"}><GoHomeFill/></Title>
-          <Title title={"Shorts"}><SiYoutubeshorts/></Title>
-          <Title title={"Subscription"}><MdOutlineSubscriptions/></Title>
-          <Title title={"Playlist"}><MdPlaylistAddCheckCircle/></Title>
-            </div>
-            <div className='px-8 py-4 flex flex-col gap-y-6'>
-          <Title title={"Your channel"}><CgProfile/></Title>
-          <Title title={"History"}><MdHistory/></Title>
-          <Title title={"Playlists"}><MdOutlinePlaylistPlay/></Title>
-          <Title title={"Your Videos"}><MdOndemandVideo/></Title>
-          <Title title={"Watch Later"}><MdOutlineWatchLater/></Title>
-          <Title title={"Liked Videos"}><AiOutlineLike/></Title>
-          <Title title={"Subscription"}><MdPlaylistAddCheckCircle/></Title>
-            </div>
+                <div className='px-8 py-4 flex flex-col gap-y-6'>
+                    <Title title={"Home"}><GoHomeFill /></Title>
+                    <Title title={"Shorts"}><SiYoutubeshorts /></Title>
+                    <Title title={"Subscription"}><MdOutlineSubscriptions /></Title>
+                    <Title title={"Playlist"}><MdPlaylistAddCheckCircle /></Title>
+                </div>
+                <div className='px-8 py-4 flex flex-col gap-y-6'>
+                    <Title title={"Your channel"}><CgProfile /></Title>
+                    <Title title={"History"}><MdHistory /></Title>
+                    <Title title={"Playlists"}><MdOutlinePlaylistPlay /></Title>
+                    <Title title={"Your Videos"}><MdOndemandVideo /></Title>
+                    <Title title={"Watch Later"}><MdOutlineWatchLater /></Title>
+                    <Title title={"Liked Videos"}><AiOutlineLike /></Title>
+                    <Title title={"Subscription"}><MdPlaylistAddCheckCircle /></Title>
+                </div>
             </div>
         </div>
     )
