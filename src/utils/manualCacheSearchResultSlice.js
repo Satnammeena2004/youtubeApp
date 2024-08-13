@@ -14,8 +14,8 @@ const manualCacheSearchResults = createSlice({
         state.cache ={...action.payload,...state.cache};
     }
     ,
-    changeVisibilityOfSideBar:(state)=>{
-          state.sidebarVisibility = !state.sidebarVisibility;
+    changeVisibilityOfSideBar:(state,action)=>{
+          state.sidebarVisibility = action.payload;
     }
   }
 });

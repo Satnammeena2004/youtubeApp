@@ -82,10 +82,10 @@ function SidebarSection() {
     const dispatch = useDispatch();
 
     return (
-        <div id='sidebarSection' className='bg-[#0f0f0f] transition-all *:text-white w-60 absolute no-scrollbar  top-0 z-50 h-[calc(100%+90px)] overflow-y-scroll pt-4'>
+        <div id='sidebarSection' className='bg-[#0f0f0f] transition-all *:text-white w-60 absolute no-scrollbar  top-0 z-50 h-full overflow-y-scroll pt-4'>
             <div className="flex gap-6 ml-8">
                 <button onClick={() => {
-                    dispatch(changeVisibilityOfSideBar())
+                    dispatch(changeVisibilityOfSideBar(false))
 
                 }} className="flex justify-center items-center"><IoIosOptions className="text-xl text-white" /></button>
                 <svg xmlns="http://www.w3.org/2000/svg" id="yt-logo-updated-svg_yt9" class="external-icon" viewBox="0 0 90 20" focusable="false" style={{ pointerEvents: "none", fill: "white", display: "inherit", width: "100px", height: "40px" }} aria-hidden="true">
