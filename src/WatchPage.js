@@ -4,6 +4,7 @@ import Comments from "./Comments";
 import LiveChat from "./LiveChat";
 import { condtionalURL, YOUTUBE_API_KEY } from "./constant";
 import EmbedVideo from "./EmbedVideo";
+import WatchPageCard from "./WatchPageCard";
 
 function WatchPage() {
   const [videoDetail, setVideoDetail] = useState([]);
@@ -24,19 +25,11 @@ function WatchPage() {
   }, [searchParam]);
 
   return (
-    <div className="p-2  px-20 flex justify-between w-full bg-[#0f0f0f]">
-      <div className="">
-        <h1 className="p-1 text-center font-bold text-2xl ">Watch Page</h1>
-        {/* <div className="h-60  shadow-lg"></div> */}
-        <EmbedVideo id={searchParam.get("v")} />
-        <div>
-          <Comments />
-        </div>
-      </div>
-
-      <div className="p-2 shadow-lg  bg-[#0f0f0f]">
-        <LiveChat />
-      </div>
+    <div className="p-2  px-20 flex justify-between w-full bg-[#0f0f0f] flex-col">
+      <EmbedVideo id={searchParam.get("v")} />
+      <WatchPageCard/>
+      <Comments />
+      {/* <LiveChat /> */}
     </div>
   );
 }
