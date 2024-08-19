@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { VIDEO_CATEGORY_API_URL, YOUTUBE_API_KEY } from './constant';
 import { IoIosArrowForward } from "react-icons/io";
 import { useNavigate } from 'react-router-dom';
@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 function Category() {
+const ref     = useRef(null);
 const [category,setCategory] = useState([])
 const  navigate = useNavigate();
 
@@ -31,14 +32,9 @@ const  navigate = useNavigate();
 
   return (
     // <div>Category</div>
-    <div className='p-2 flex overflow-x-scroll no-scrollbar  bg-[#0f0f0f] fixed w-full z-[2] '>
+    <div ref={ref} className='p-2 flex overflow-x-scroll no-scrollbar scroll-smooth  bg-[#0f0f0f] fixed w-full z-[2] '>
       <button onClick={(e)=>{
-        console.log("Clciked")
-        e.target.parentElement.scrollBy({
-          top:0,
-          left:100,
-          behavior:"smooth"
-        })
+          ref.current.scrollBy(100,0);
       }} className='fixed right-4'><IoIosArrowForward className='text-xl text-white bg-black '/></button>
       {
         category.map((category)=><button key={category.id} onClick={()=>handleCLick(category.snippet.title)} className='px-2 py-1 text-[#f1f1f1] rounded-md mx-2 text-sm break-keep text-nowrap bg-[#272727]'>{category.snippet.title}</button>)
