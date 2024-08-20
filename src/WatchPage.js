@@ -6,30 +6,20 @@ import { condtionalURL, YOUTUBE_API_KEY } from "./constant";
 import EmbedVideo from "./EmbedVideo";
 import WatchPageCard from "./WatchPageCard";
 
+
+
+
 function WatchPage() {
-  const [videoDetail, setVideoDetail] = useState([]);
   const [searchParam] = useSearchParams();
-  console.log(searchParam.get("v"));
-
-  useEffect(() => {
-    async function getVideoDetail() {
-      const videoDetailFetching = await fetch(
-        condtionalURL(`id=${searchParam.get("v")}&key=` + YOUTUBE_API_KEY)
-      );
-      const videoDetail = await videoDetailFetching.json();
-      console.log("videoDetaile", videoDetail);
-      // setVideoDetail(videoDetail)
-    }
-
-    getVideoDetail();
-  }, [searchParam]);
+  console.log("search param",searchParam.get("v"));
+  //  Intl.NumberFormat()
+ 
 
   return (
-    <div className="p-2  px-20 flex justify-between w-full bg-[#0f0f0f] flex-col">
+    <div className="p-2  px-20 flex justify-between w-full bg-[#0f0f0f] flex-col no-scrollbar overflow-y-scroll">
       <EmbedVideo id={searchParam.get("v")} />
-      <WatchPageCard/>
+      <WatchPageCard searchParam={searchParam}/>
       <Comments />
-      {/* <LiveChat /> */}
     </div>
   );
 }

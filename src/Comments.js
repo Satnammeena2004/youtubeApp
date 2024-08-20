@@ -2,6 +2,8 @@ import {useState} from "react";
 import Logo from "./logo.png";
 import {useGetCommentsByIdQuery} from "./utils/fetchComments";
 import {useSearchParams} from "react-router-dom";
+import  {formatNumber} from "./constant"
+import {AiOutlineLike} from "react-icons/ai"
 
 // const comment = [
 //   {
@@ -160,9 +162,9 @@ function Replies({comment}) {
           src={authorProfileImageUrl}
           alt="..."
         />
-        <span className="font-bold">{authorDisplayName}</span>
+        <span className="font-bold text-xs">{authorDisplayName}</span>
       </div>
-      <p>
+      <p className="text-xs">
         {textOriginal
           .slice(0, showComments ? 20 : textOriginal.length)
           .split("\n")
@@ -213,12 +215,12 @@ function Comment2({comment}) {
         />
         <div className="">
           <div>
-            <span className="font-bold text-sm">{authorDisplayName}</span>
+            <span className="font-semibold text-xs">{authorDisplayName}</span>
             <span className="text-xs mx-3 my-1">
               {dateDiff(publishedAt) + "days ago"}
             </span>
           </div>
-          <p className="text-sm">
+          <p className="text-xs">
             {textOriginal
               .slice(0, showComments ? 20 : textOriginal.length)
               .split("\n")
@@ -238,7 +240,7 @@ function Comment2({comment}) {
               className=" mx-2 border-1 border-gray-400 text-xs  px-2 rounded-lg "
               onClick={() => setShowComments(!showComments)}
             >
-              {likeCount > 0 && "👍🏻" + likeCount}
+              {likeCount > 0 && <div className="flex gap-x-1"><AiOutlineLike/> <span>{formatNumber(likeCount)}</span></div>}
             </button>
           </p>
         </div>
