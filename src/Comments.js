@@ -2,7 +2,7 @@ import {useState} from "react";
 import Logo from "./logo.png";
 import {useGetCommentsByIdQuery} from "./utils/fetchComments";
 import {useSearchParams} from "react-router-dom";
-import  {formatNumber} from "./constant"
+import  {formatNumber, timeAgo} from "./constant"
 import {AiOutlineLike} from "react-icons/ai"
 
 // const comment = [
@@ -195,17 +195,13 @@ function Comment2({comment}) {
     textOriginal,
   } = comment?.snippet?.topLevelComment?.snippet;
 
-  function dateDiff(a) {
-    const date1 = new Date();
-    const date2 = new Date(a);
-    const diffTime = Math.abs(date2 - date1);
-    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-
-    return diffDays;
-  }
-
+  
+  
   return (
+    
     <div className="w-full   p-2 my-1 rounded-lg    h-full">
+       <div>
+      </div>
       <div className="flex gap-1 w-full">
         {" "}
         <img
@@ -217,7 +213,7 @@ function Comment2({comment}) {
           <div>
             <span className="font-semibold text-xs">{authorDisplayName}</span>
             <span className="text-xs mx-3 my-1">
-              {dateDiff(publishedAt) + "days ago"}
+              {timeAgo(publishedAt)}
             </span>
           </div>
           <p className="text-xs">
@@ -322,7 +318,6 @@ function CommentList({queryId}) {
   console.log("data", data.items);
   return (
     <>
-      <h1>Comment List</h1>
       <div className="*:text-white">
         {data?.items?.map((comment) => (
           <Comment2 key={comment.id} comment={comment} />
@@ -337,8 +332,6 @@ function Comments() {
   console.log(searchParam.get("v"));
   return (
     <div className="w-full">
-      <h1 className="p-1 text-center font-bold text-2xl ">Comments:</h1>
-
       <CommentList queryId={searchParam.get("v")} />
     </div>
   );

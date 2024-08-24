@@ -2,7 +2,12 @@ import React, { useEffect, useState } from "react";
 import { AiOutlineLike, AiOutlineDislike } from "react-icons/ai";
 import { IoIosShareAlt } from "react-icons/io";
 import { MdMoreHoriz } from "react-icons/md";
-import { condtionalURL, formatNumber, YOUTUBE_API_KEY } from "./constant";
+import {
+  condtionalURL,
+  formatNumber,
+  timeAgo,
+  YOUTUBE_API_KEY,
+} from "./constant";
 
 function CustomButton({ children, className }) {
   return (
@@ -10,6 +15,15 @@ function CustomButton({ children, className }) {
       {children}
     </button>
   );
+}
+
+
+function CommentCount({commentCount=0}){
+
+  return (
+  <div className="p-3 mt-10 font-bold bg-gray-500/35">
+  <span>Comments:{formatNumber(commentCount)}</span>
+  </div>)
 }
 
 // function Description(){
@@ -21,13 +35,40 @@ function CustomButton({ children, className }) {
 //   )
 // }
 
-function Description({ description, views }) {
+function Description({ description, views, publishedAt }) {
+  const [showLines, setShowLines] = useState(2);
+  let arr = description.split("\n");
   return (
-    <div className="p-2 bg-gray-500/45 rounded-md mt-5">
-      <div>
-        <span className="text-xs">{formatNumber(views)}</span>
+    <div className="p-2 bg-gray-500/35 rounded-md mt-5 ">
+      <div className="flex gap-x-2">
+        <span className="text-xs font-semibold">{formatNumber(views)}</span>
+        <span className="text-xs font-semibold">{timeAgo(publishedAt)}</span>
       </div>
-      <p className="text-sm">{description}</p>
+      <div className="flex flex-col text-sm">
+        {arr.slice(0, showLines).map((para) => (
+          <span>{para}</span>
+        ))}
+        {showLines === 2 ? (
+          <span
+            className="cursor-pointer"
+            onClick={() => {
+              setShowLines(arr.length);
+            }}
+          >
+            ...More
+          </span>
+        ) : (
+          <span
+            className="cursor-pointer"
+            onClick={() => {
+              setShowLines(2);
+            }}
+          >
+            ...less
+          </span>
+        )}
+      </div>
+      {/* <p className="text-sm">{description}</p>/ */}
     </div>
   );
 }
@@ -41,7 +82,7 @@ function WatchPageCard({ searchParam }) {
         condtionalURL(`id=${searchParam.get("v")}&key=` + YOUTUBE_API_KEY)
       );
       const video = await videoDetailFetching.json();
-      console.log(video);
+
       setVideoDetail(video);
     }
 
@@ -53,13 +94,13 @@ function WatchPageCard({ searchParam }) {
   }
 
   const {
-    snippet: { channelTitle, description, channelId, title },
+    snippet: { channelTitle, description, publishedAt, title },
     statistics: { likeCount, commentCount, viewCount },
   } = videoDetail.items[0];
-
+console.log("commentCount",commentCount);
   return (
-    <div className="  p-2 *:text-slate-50 w-2/3">
-      <div>{title}</div>
+    <div className="p-2 *:text-slate-50 w-2/3">
+      <div className="p-2">{title}</div>
       <div className="p-2  flex justify-between">
         <div className="flex gap-x-2">
           <div>
@@ -73,7 +114,7 @@ function WatchPageCard({ searchParam }) {
             <h3>{channelTitle}</h3>
             <p className="text-xs text-slate-100/80">2.2M subscribers</p>
           </div>
-          <CustomButton className={"text-zinc-50 text-sm py-0.5  px-5"}>
+          <CustomButton className={"bg-zinc-50 text-black/90 text-sm py-0.5  px-5"}>
             subscribe
           </CustomButton>
         </div>
@@ -96,7 +137,12 @@ function WatchPageCard({ searchParam }) {
           </CustomButton>
         </div>
       </div>
-      <Description description={description} views={viewCount} />
+      <Description
+        description={description}
+        views={viewCount}
+        publishedAt={publishedAt}
+      />
+      <CommentCount  commentCount={commentCount}/>
     </div>
   );
 }
