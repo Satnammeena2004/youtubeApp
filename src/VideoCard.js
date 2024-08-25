@@ -54,7 +54,7 @@ function VideoCard({ data }) {
             <p className=" overflow-ellipsis line-clamp-2 font-semibold *:text-[#f1f1f1]">
               {title}
             </p>
-            <div className="flex-1 text-gray-400 font-normal">
+            <div className="flex-1 text-gray-400 font-normal hover:text-white/80">
               {channelTitle}
             </div>
             <div className="flex gap-3 text-xs *:text-gray-400 *:font-light items-center">
