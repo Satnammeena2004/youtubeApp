@@ -52,9 +52,9 @@ function SearchResults() {
   }
 
   return (
-    <div className="w-full  no-scrollbar">
+    <div className="w-full bg-[#0f0f0f] no-scrollbar ">
       <Category />
-      <div className="grid grid-cols-3 bg-[#0f0f0f] gap-4  overflow-y-scroll mt-8 no-scrollbar">
+      <div className="p-2 grid grid-flow-row grid-cols-3 h-screen overflow-y-scroll no-scrollbar mt-8">
         {searchQueryResults?.items?.map((result) => (
           <VideoCard key={result.etag} data={result} />
         ))}

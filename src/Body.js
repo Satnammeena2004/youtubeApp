@@ -4,7 +4,7 @@ import {Outlet} from "react-router-dom"
 
 function Body() {
   return (
-    <div className='dark flex '>
+    <div className='dark flex w-full'>
       <SideBar/>    
       <Outlet/>
     </div>
