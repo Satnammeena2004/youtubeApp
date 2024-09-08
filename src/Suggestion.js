@@ -37,7 +37,7 @@ const Suggestion = memo(function Suggestion({ visibility, query }) {
 
 
   if (suggestions.length === 0) {
-    return <h1>No suggestion</h1>;
+    return <></>;
   }
 
   return (
@@ -45,7 +45,7 @@ const Suggestion = memo(function Suggestion({ visibility, query }) {
       {visibility && (
         <div
           id="scrollbar"
-          className="w-1/3 bg-gray-200 p-1 rounded-sm absolute top-14 *:text-sm *:text-slate-700 scrollbar h-60 overflow-y-scroll z-auto	"
+          className="w-1/3 bg-black/95 p-1 rounded-sm absolute top-14 *:text-sm *:text-white/90 no-scrollbar h-60 overflow-y-scroll z-auto	"
         >
           <div className="flex flex-col">
             {suggestions.map((suggestion, i) => (
@@ -53,7 +53,7 @@ const Suggestion = memo(function Suggestion({ visibility, query }) {
                 key={i}
                 value={suggestion}
                 id="suggestion"
-                className="p-1 hover:bg-gray-300 border-b-gray-300 border-b-2 text-left suggestion"
+                className="p-2 hover:bg-gray-400/30 border-b-gray-300  text-left suggestion rounded-lg"
               >
                 {suggestion}
               </button>

@@ -44,15 +44,21 @@ function VideoList() {
   );
 
   useEffect(() => {
-    const elem = ref.current;
-    if (!elem) return;
 
-    elem.addEventListener("scroll", onScroll);
+    try {
 
-    // Cleanup function to remove the scroll event listener
-    return () => {
-      elem.removeEventListener("scroll", onScroll);
-    };
+      const elem = ref.current;
+      if (!elem) return;
+
+      elem.addEventListener("scroll", onScroll);
+ 
+      // Cleanup function to remove the scroll event listener
+      return () => {
+        elem.removeEventListener("scroll", onScroll);
+      };
+    } catch (err) {
+      console.log(err)
+    }
   }, [onScroll]);
 
   if (isLoading) {

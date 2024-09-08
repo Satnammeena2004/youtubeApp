@@ -88,7 +88,7 @@ function Header() {
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               type="text"
-              placeholder="serach"
+              placeholder="search"
               onBlur={(e) => {
                 if (e.relatedTarget?.id === "suggestion") {
                   setQuery(e?.relatedTarget?.value);
