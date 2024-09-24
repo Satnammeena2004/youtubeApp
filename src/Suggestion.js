@@ -13,14 +13,14 @@ const Suggestion = memo(function Suggestion({ visibility, query }) {
       try {
 
         const res2 = await fetch(
-          ` https://youtube.googleapis.com/youtube/v3/videoCategories?part=snippet&regionCode=IN&key=` + YOUTUBE_API_KEY
+          `https://youtube.googleapis.com/youtube/v3/videoCategories?part=snippet&regionCode=IN&key=` + YOUTUBE_API_KEY
         );
         const json2 = await res2.json();
         console.log("SUGGESTIONS", json2);
         // setSuggestions(json2.items.map((item) => item?.snippet?.channelTitle));
       } catch (err) {
         console.log(err)
-      }
+      } 
     }
 
     // getSuggestions();

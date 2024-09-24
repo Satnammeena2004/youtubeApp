@@ -1,10 +1,10 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
-import {YOUTUBE_API_KEY} from "../constant";
+import {YOUTUBE_API_KEY,YOUTUBE_API_BASE_URL} from "../constant";
 
 const searchListApi = createApi({
   reducerPath: "serachResults",
   baseQuery: fetchBaseQuery({
-    baseUrl: `https://www.googleapis.com/youtube/v3/search?part=snippet&q=`,
+    baseUrl: YOUTUBE_API_BASE_URL+`search?part=snippet%2CcontentDetails%2Cstatistics&q=`,
   }),
 
   endpoints: (builder) => ({

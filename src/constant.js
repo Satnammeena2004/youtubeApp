@@ -1,18 +1,20 @@
 export const YOUTUBE_API_KEY = process.env.REACT_APP_YOUTUBE_API_KEY
 export const YOUTUBE_API_URL = process.env.REACT_APP_YOUTUBE_API_URL
-export const VIDEO_CATEGORY_API_URL = "https://youtube.googleapis.com/youtube/v3/videoCategories?part=snippet&regionCode=IN&key="
+export const VIDEO_CATEGORY_API_URL = process.env.REACT_APP_YOUTUBE_CATEGORY_API_URL
 
-export function condtionalURL(conditionalStr){
-    return "https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&"
-    +conditionalStr
+export const YOUTUBE_API_BASE_URL = process.env.REACT_APP_YOUTUBE_API_BASE_URL
+
+export function condtionalURL(conditionalStr) {
+    return YOUTUBE_API_BASE_URL + "videos?part=snippet%2CcontentDetails%2Cstatistics&"
+        + conditionalStr
 }
 
 
 export function formatNumber(num) {
     const formatter = new Intl.NumberFormat('en', { notation: 'compact', compactDisplay: 'short' });
     return formatter.format(num);
-  }
-  
+}
+
 export function timeAgo(date) {
     const now = Date.now();
     const secondsPast = Math.floor((now - new Date(date).getTime()) / 1000);

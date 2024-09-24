@@ -3,7 +3,7 @@ import Category from "./Category";
 import VideoCard from "./VideoCard";
 
 import { useGetDataQuery } from "./utils/dataSlice";
-import ShimmerList, { Shimmer, Shimmers } from "./Shimmer";
+import ShimmerList, { Shimmers } from "./Shimmer";
 
 function VideoList() {
   const { isLoading, data } = useGetDataQuery();
@@ -20,28 +20,26 @@ function VideoList() {
   };
 
   // Memoized onScroll function
-  const onScroll = useCallback(
-    debounce(() => {
-      if (!ref.current) return;
-      const elem = ref.current;
-      const SH = elem.scrollHeight;
-      const ST = elem.scrollTop;
-      const CH = elem.clientHeight;
-      const value = SH - (ST + CH);
+  const onScroll = debounce(() => {
+    if (!ref.current) return;
+    const elem = ref.current;
+    const SH = elem.scrollHeight;
+    const ST = elem.scrollTop;
+    const CH = elem.clientHeight;
+    const value = SH - (ST + CH);
 
-      if (value <= 150 && flag.current) {
-        flag.current = false;
-        setShowShimmer(true);
-        setTimeout(() => {
-          setShowShimmer(false);
-          setHowMuch((prev) => prev + 6); // Increment the video count
-          flag.current = true;
-          console.log("call the API....");
-        }, 2000);
-      }
-    }, 200), // Debounce delay
-    [HowMuch]
-  );
+    if (value <= 150 && flag.current) {
+      flag.current = false;
+      setShowShimmer(true);
+      setTimeout(() => {
+        setShowShimmer(false);
+        setHowMuch((prev) => prev + 6); // Increment the video count
+        flag.current = true;
+        console.log("call the API....");
+      }, 2000);
+    }
+  }, 200)// Debounce delay
+
 
   useEffect(() => {
 
@@ -51,7 +49,7 @@ function VideoList() {
       if (!elem) return;
 
       elem.addEventListener("scroll", onScroll);
- 
+
       // Cleanup function to remove the scroll event listener
       return () => {
         elem.removeEventListener("scroll", onScroll);
