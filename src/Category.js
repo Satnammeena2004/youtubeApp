@@ -2,30 +2,37 @@ import React, { useEffect, useRef, useState } from 'react'
 import { VIDEO_CATEGORY_API_URL, YOUTUBE_API_KEY } from './constant';
 import { IoIosArrowForward } from "react-icons/io";
 import { useNavigate } from 'react-router-dom';
+import useCategory from './utils/hooks/useCategory';
 
 
 
 
 function Category() {
   const ref = useRef(null);
-  const [category, setCategory] = useState([])
+  const [category, isLoading, isError] = useCategory()
   const navigate = useNavigate();
+
+console.log("category",category,isLoading,isError)
+
 
   function handleCLick(to) {
     navigate("/search?q=" + to?.toLowerCase());
   }
 
 
-  useEffect(() => {
-    async function getCategories() {
-      const data = await fetch(VIDEO_CATEGORY_API_URL + YOUTUBE_API_KEY);
-      const json = await data.json();
-      setCategory(json.items);
-    }
-    getCategories()
-  }, [])
+  // useEffect(() => {
+  //   async function getCategories() {
+  //     const data = await fetch(VIDEO_CATEGORY_API_URL + YOUTUBE_API_KEY);
+  //     const json = await data.json();
+  //     setCategory(json.items);
+  //   }
+  //   getCategories()
+  // }, [])
 
-  if (category?.length === 0) {
+  if (isError) {
+    return <h1>Error in Category</h1>
+  }
+  if (isLoading) {
     return <h1>Loading..</h1>
   }
 

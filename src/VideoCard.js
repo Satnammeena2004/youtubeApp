@@ -24,7 +24,6 @@ function viewCount(view) {
   }
 }
 function VideoCard({ data }) {
-  // console.log(data)
 
   const { snippet, statistics, id } = data;
   const { channelTitle, title, thumbnails, publishedAt } = snippet;

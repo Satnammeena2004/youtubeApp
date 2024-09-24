@@ -15,8 +15,7 @@ function SearchResults() {
 
   const cache = useSelector((store) => store.searchResultsCache.cache);
   const dispatch = useDispatch()
-  console.log("cache", cache);
-
+  console.log("serach result renders")
   useEffect(() => {
     async function getResults() {
       try {
@@ -42,13 +41,12 @@ function SearchResults() {
       console.log("api call");
       getResults().then((result)=>{
         dispatch(cacheResults({[searchParam.get("q")]:result}))
-
       })
     }
-  }, [searchParam, dispatch]);
+  }, [searchParam, dispatch,cache]);
 
-  if (searchQueryResults === 0) {
-    return <h1>Loading Search Results for -{searchParam.get("q")}</h1>;
+  if (searchQueryResults.length === 0) {
+    return null;
   }
 
   return (

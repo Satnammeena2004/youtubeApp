@@ -26,14 +26,6 @@ function CommentCount({commentCount=0}){
   </div>)
 }
 
-// function Description(){
-
-//   return (
-//     <div>
-
-//     </div>
-//   )
-// }
 
 function Description({ description, views, publishedAt }) {
   const [showLines, setShowLines] = useState(2);
@@ -52,7 +44,7 @@ function Description({ description, views, publishedAt }) {
           <span
             className="cursor-pointer"
             onClick={() => {
-              setShowLines(arr.length);
+              setShowLines(arr?.length);
             }}
           >
             ...More
